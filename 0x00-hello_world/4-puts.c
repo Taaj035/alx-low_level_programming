@@ -1,9 +1,6 @@
-/*
- * Task 4-Puts
-*/
 #include <stdio.h>
 /**
- * main - Prints "Programming is like building a mutlilingual puzzle, followed by new line"
+ * main - Prints "Programming is like building a mutlilingual puzzle"
  *
  * Return: Always 0.
  */
