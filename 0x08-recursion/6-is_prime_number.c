@@ -3,13 +3,13 @@
  * is_prime_number - determines if an integer is prime number.
  * @n: the number to be evaluated
  * Return: On success 1.
- * O if failure.
+ * 0 if failure.
  *
  */
 int is_prime_number(int n)
 {
 	int actual_prime(int n, int i);
-	
+
 	if (n <= 1)
 		return (0);
 	return (actual_prime(n, n - 1));
