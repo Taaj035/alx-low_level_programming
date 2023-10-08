@@ -1,7 +1,8 @@
 #include <stdlib.h>
+#include <stdio.h>
 #include "main.h"
 /**
- * _calloc: this function allocates memory
+ * _calloc - this function allocates memory
  * @nmemb: determines the number of array elements
  * @size: the size of each element in the array
  * Return: Pointer to first index in the array
