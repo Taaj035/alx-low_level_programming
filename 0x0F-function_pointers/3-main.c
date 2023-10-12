@@ -1,44 +1,34 @@
+#include "3-calc.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include "3-calc.h"
+#include <string.h>
 
 /**
- * main - Start here to do stuff
- * @argc: Number of arguments passed in
- * @argv: Arguments stored in each index
- * Return: Success
+ * main - program that performs simple operations
+ *
+ * @argc: Counts the number of parameters that go into main
+ * @argv: Pointer of array of pointers containing strings entering main
+ *
+ * Return: No element matches -1, if size <=0 -1
+ * else index of first element cmp func does not rtrn 0
  */
-int main(int argc, char *argv[])
+int main(int argc, char **argv)
 {
-	int result, num1, num2;
-	int (*ptr)(int, int);
+	int res;
+	int (*func)(int, int);
 
-	if (argc < 4 || argv[1] == NULL || argv[3] == NULL)
-	{
-		printf("Error\n");
-		exit(98);
-	}
+	if (argc != 4)
+		printf("Error\n"), exit(98);
 
-	if ((*argv[2] == '/' || *argv[2] == '%') && *argv[3] == '0')
-	{
-		printf("Error\n");
-		exit(100);
-	}
+	if ((argv[2][0] != '+' && argv[2][0] != '-' && argv[2][0] != '*'
+	     && argv[2][0] != '/' && argv[2][0] != '%') || strlen(argv[2]) != 1)
+		printf("Error\n"), exit(99);
 
-	num1 = atoi(argv[1]);
-	num2 = atoi(argv[3]);
+	if ((argv[2][0] == '/' || argv[2][0] == '%') && (atoi(argv[3]) == 0))
+		printf("Error\n"), exit(100);
 
-	ptr = get_op_func(argv[2]);
-
-	if (ptr == NULL || argv[2][1] != '\0')
-	{
-		printf("Error\n");
-		exit(99);
-	}
-
-	result = ptr(num1, num2);
-
-	printf("%d\n", result);
-
+	func = get_op_func(argv[2]);
+	res = func(atoi(argv[1]), atoi(argv[3]));
+	printf("%i\n", res);
 	return (0);
 }
